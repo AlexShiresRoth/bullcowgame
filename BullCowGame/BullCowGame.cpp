@@ -23,9 +23,9 @@ int main()
 
 	string Guess = "";
 
-	cin >> Guess;
+	getline(cin, Guess);
 
-	cout << "You guessed " << Guess;
+	cout << "You guessed: " << Guess;
 
 	//repeat the guess back to them
 
