@@ -8,26 +8,79 @@
 //std:: is a namespace
 using namespace std;
 
-int main()
+void PrintIntro();
+void StartGame();
+
+string GetGuess();
+
+bool AskToPlayAgain();
+
+bool AskToPlayAgain()
+{
+	cout << "Do you want to play again? y/n" << endl;
+	string Response = "";
+
+	getline(cin, Response);
+
+	if (Response[0] == 'y' || Response[0] == 'Y') {
+
+		cout << "True";
+		return true;
+	}
+
+	cout << "False";
+
+	return false;
+}
+
+void PrintIntro() 
 {
 	//introduce the game
 	constexpr int WORD_LENGTH = 5;
-	
+
 	cout << "Welcome to Bulls and Cows, a fun word game.\n";
 	cout << "Can you guess the " << WORD_LENGTH;
 	cout << " letter isogram I'm thinking of? \n";
 	cout << endl;
 	// get a guess from the player
 
-	cout << "Try and guess!\n";
+	return;
+}
+
+string GetGuess() {
+
+	cout << "Try and guess: ";
 
 	string Guess = "";
 
 	getline(cin, Guess);
 
-	cout << "You guessed: " << Guess;
+	return Guess;
+}
 
-	//repeat the guess back to them
+void StartGame() 
+{
+	constexpr int NUMBER_OF_TURNS = 5;
+
+	for (int count = 0; count < NUMBER_OF_TURNS; count++) {
+
+		 string Guess = GetGuess();
+
+		 cout << "You guessed: " << Guess << endl;
+		 
+		 cout << endl;
+	}
+	return;
+}
+
+//the entry point for our application
+int main()
+{
+	PrintIntro();
+
+	StartGame();
+
+	AskToPlayAgain();
 
 	return 0;
 }
