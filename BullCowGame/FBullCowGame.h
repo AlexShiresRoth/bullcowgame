@@ -1,6 +1,11 @@
 #pragma once
 #include <string>;
 
+/* 
+The game logic(no view code or direct user interaction)
+The game is a simple word guessing game based on Mastermind
+*/
+
 //dont use namespace in header files
 
 using FString = std::string;
@@ -36,7 +41,7 @@ public:
 	
 	EGuessStatus CheckGuessValidity(FString) const; 
 
-	void Reset(); //todo make a more rich return value
+	void Reset(); 
 	
 	//provide a method for counting bulls and cows and increasing try number
 	//counts bulls and cows and increases try number assuming valid guess

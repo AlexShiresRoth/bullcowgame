@@ -1,11 +1,17 @@
+#pragma once
+
 #include "pch.h"
 #include "FBullCowGame.h"
+
+//to make syntax Unreal friendly
 #include <map>
-#define TMap std::map
+#define TMap std::map 
 
 int32 FBullCowGame::GetMaxTries () const
 {
-	return MyMaxTries;
+	//wordlength to max tries
+	TMap<int32, int32> WordLengthToMaxTries{ {3, 4}, {4, 6}, {5, 10}, {6, 15} };
+	return WordLengthToMaxTries[MyHiddenWord.length()];
 }
 
 int32 FBullCowGame::GetCurrentTry() const
@@ -141,13 +147,11 @@ FBullCowGame::FBullCowGame()
 
 void FBullCowGame::Reset()
 {
-	constexpr int32 MAX_TRIES = 8;
-	const FString HIDDEN_WORD = "planet";
+	const FString HIDDEN_WORD = "planet"; //this must be an isogram
 	
 	MyHiddenWord = HIDDEN_WORD;
 	bGameIsWon = false;
 	MyCurrentTry = 1;
-	MyMaxTries = MAX_TRIES;
 	return;
 }
 

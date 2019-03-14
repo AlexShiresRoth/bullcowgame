@@ -3,6 +3,7 @@
 /* This is the console executable, that makes use of BullCowGame class 
 This acts as the view in a MVC pattern, and is responsible for all user interaction.
 For game logic see the FBullCowGame class.*/
+#pragma once
 
 #include "pch.h" //
 #include <iostream>
@@ -11,9 +12,10 @@ For game logic see the FBullCowGame class.*/
 
 
 //std:: is a namespace
-using FText = std::string;
-using int32 = int;
+using FText = std::string; //FText is used in unreal engine coding standards
+using int32 = int; //int32 is used in unreal coding standards
 
+//function prototypes as outside a class
 void PrintIntro();
 void StartGame();
 void PrintGameSummary();
@@ -22,11 +24,11 @@ FText GetValidGuess();
 
 bool AskToPlayAgain();
 
-FBullCowGame BCGame; //instantiate a new game
+FBullCowGame BCGame; //instantiate a new game from the class 
 
 bool AskToPlayAgain()
 {
-	std::cout << "Do you want to play again with the same word? (y/n)" << std::endl;
+	std::cout << "Do you want to play again with the same word? (y/n) \n\n";
 
 	FText Response = "";
 
@@ -34,11 +36,10 @@ bool AskToPlayAgain()
 
 	if (Response[0] == 'y' || Response[0] == 'Y') {
 
-		std::cout << "True";
 		return true;
 	}
 
-	std::cout << "False";
+	std::cout << "Goodbye!" << std::endl;
 
 	return false;
 }
@@ -46,7 +47,6 @@ bool AskToPlayAgain()
 void PrintIntro() 
 {
 	//introduce the game
-
 	std::cout << "\n\n Welcome to Bulls and Cows, a fun word game.\n";
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of? \n";
@@ -91,6 +91,7 @@ FText GetValidGuess() {
 	return Guess;
 }
 
+//plays a single game to completion
 void StartGame() 
 {
 	BCGame.Reset();
@@ -143,14 +144,3 @@ int main()
 
 	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
